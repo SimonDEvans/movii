@@ -192,39 +192,46 @@ var movii = function() {
    */
   var modal = function() {
 
+    var $modal            = $( '.modal' ),
+        $hero             = $( '.modal__hero' ),
+        $title            = $( '.modal__title' ),
+        $summary          = $( '.modal__summary' ),
+        $videoLink        = $( '.modal__video a' ),
+        $home             = $( '.home' ),
+        $homeWrapper      = $( '.home-wrapper' ),
+        $triggerModal     = $( '.js-modal' ),
+        initialURL        = location.href;
+
     function populateModal( response ) {
 
       var bgImage = 'https://image.tmdb.org/t/p/original' + response.backdrop_path,
           heroImage = 'url("' + bgImage + '")';
 
-      $( '.modal__hero' ).css({
+      $hero.css({
         'background-image' : heroImage,
       });
 
-      $( '.modal__title' ).text( response.title );
-      $( '.modal__summary' ).text( response.overview );
-
-      history.replaceState(null, null, window.location.pathname + '?' + response.id)
-
+      $title.text( response.title );
+      $summary.text( response.overview );
     }
 
     function populateVideo( videoID ) {
-      $( '.modal__video a' ).attr('href', "http://youtube.com/watch?v=" + videoID + "");
+      $videoLink.attr('href', "http://youtube.com/watch?v=" + videoID + "");
     }
 
     function showModal() {
-      $( '.modal' ).fadeIn(300);
-      $( '.home' ).fadeOut(300);
-      $( '.home-wrapper' ).fadeOut(300)
+      $modal.fadeIn(300);
+      $home.fadeOut(300);
+      $homeWrapper.fadeOut(300)
       $( 'html, body' ).animate({
          scrollTop: $( 'body' ).offset().top
       }, 0);
     }
 
     function hideModal() {
-      $( '.modal' ).fadeOut(300);
-      $( '.home' ).fadeIn(300);
-      $( '.home-wrapper' ).fadeIn(300)
+      $modal.fadeOut(300);
+      $home.fadeIn(300);
+      $homeWrapper.fadeIn(300)
     }
 
     function retrieveMovies( linkText ) {
@@ -276,23 +283,25 @@ var movii = function() {
       });
     }
 
-    $( '.hero__launch' ).on( 'click', function() {
-      showModal();
-    });
-
-    $( '.site-header' ).on( 'click', function() {
-      hideModal();
-    });
-
-    $( '.js-modal' ).on( 'click', function(e) {
+    $triggerModal.on( 'click', function(e) {
       e.preventDefault();
+
+      // Get movie ID from clicked element
       var link = $(this).closest( 'div' ).find( '.movie-id' );
       var linkText = link.text();
 
+      // Set history
+      history.pushState(null, null, null); 
+
+      // Get movie data
       retrieveMovies( linkText );
     });
-  }
 
+    // Back button
+    window.onpopstate = function(event) {
+      hideModal();
+    };
+  }
 
   movieSearch();
 
