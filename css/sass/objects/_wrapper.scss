@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// WRAPPER
+// -----------------------------------------------------------------------------
+
+.wrapper {
+    position: relative;
+    max-width: $wrapper-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $wrapper-gutter;
+    padding-right: $wrapper-gutter;
+}
+
+.wrapper--wide {
+	max-width: 1200px;
+}

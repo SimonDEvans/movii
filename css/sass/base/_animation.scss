@@ -1,0 +1,82 @@
+// -----------------------------------------------------------------------------
+// ANIMATION
+// -----------------------------------------------------------------------------
+
+
+/**
+ * Default transition
+ */
+@mixin default-transition($properties) {
+    @if $properties == 'all' {
+        @error 'Please specify animation properties individually.';
+    }
+
+    transition-property: $properties;
+    transition-timing-function: $default-transition-timing-function;
+    transition-duration: $default-transition-duration;
+}
+
+
+/**
+ * Long transition
+ */
+@mixin long-transition($properties) {
+    @if $properties == 'all' {
+        @error 'Please specify animation properties individually.';
+    }
+
+    transition-property: $properties;
+    transition-timing-function: $long-transition-timing-function;
+    transition-duration: $long-transition-duration;
+}
+
+
+
+/**
+ * Pulse animation
+ */
+@keyframes pulse {
+    to {
+        box-shadow: 0 0 0 30px rgba(206, 47, 63, 0);
+    }
+}
+
+
+
+/**
+ * Fade-in animation
+ */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+
+/**
+ * Glow animation
+ */
+@keyframes glow {
+    0% { opacity: 1; }
+    30% { opacity: 1; }
+    70% { opacity: 0; }
+}
+
+
+
+/**
+ * Disable animation
+ */
+@mixin resize-disable-transition() {
+    transition: none;
+}
+
+
+
+.anim-glow {
+    animation: glow 3s linear infinite;
+}
+
+.anim-fade-in {
+    animation: fadein 1s;
+}

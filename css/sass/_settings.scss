@@ -1,0 +1,98 @@
+// -----------------------------------------------------------------------------
+// SETTINGS
+// -----------------------------------------------------------------------------
+
+// Type
+$base-font-size: 16px;
+$base-line-height: 28px;
+
+$font-stack--body: "fira-sans", sans-serif;
+$font-stack--heading: "balboa-plus-fill", Helvetica Neue, sans-serif;
+$font-sizes: (
+
+    // non-standard large sizes
+    giga:    60px,
+    mega:    48px,
+    kilo:    38px,
+
+    // standard sizes
+    alpha:   35px,
+    beta:    24px,
+    gamma:   18px,
+    delta:   15px,
+    epsilon: 14px,
+    zeta:    13px,
+
+    // non-standard small sizes
+    milli:   12px,
+
+);
+
+
+// Colors
+$color--body:               #fff;
+$color--primary:            #D50D2A;
+$color--paragraph:          #fff;
+$color--link:               #000;
+$color--link-underline:     #ccc;
+
+
+// Greys
+$color--grey-default:       #4b4b4b;
+$color--grey-mid:           #555;
+$color--grey-dark:          #232323;
+$color--section-dark:       #efefef;
+
+// Lines
+$color--line:               #ddd;
+
+
+// Layout
+$wrapper-width: 1300px;
+$wrapper-gutter: 20px;
+$gutter: 20px;
+
+$breakpoints: (
+    'mobile'            '(max-width: 560px)',
+    'tablet'            '(max-width: 750px)',
+    'tablet-higher'     '(min-width: 750px)',
+    'small-desktop'     '(max-width: 960px)',
+    'fluid'             '(max-width: 1080px)',
+    'wide'              '(max-width: 1300px)',
+    'oversize'          '(min-width: 1300px)',
+    'retina'            '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)'
+);
+
+$breakpoint-has-widths: (
+    'oversize',
+    'wide',
+    'fluid',
+    'small-desktop',
+    'tablet-higher',
+    'tablet',
+    'mobile'
+);
+
+
+// Animation
+$default-transition-timing-function: ease;
+$default-transition-duration: 0.15s;
+
+$long-transition-timing-function: cubic-bezier(0.190, 1, 0.220, 1);
+$long-transition-duration: 0.75s;
+
+// z-index values
+$z-alpha:       7;
+$z-beta:        6;
+$z-gamma:       5;
+$z-delta:       4;
+$z-epsilon:     3;
+$z-zeta:        2;
+$z-milli:       1;
+$z-hidden:     -1;
+
+// Override plugins (e.g cycle)
+$z-top:         9999;
+$z-giga:        111;
+$z-mega:        110;
+$z-kilo:        109;

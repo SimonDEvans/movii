@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// HACKS
+//
+// Quick fixes and hacks should go in this file which is ignored by the SCSS
+// linter. Please refactor as soon as possible!
+// -----------------------------------------------------------------------------
+
+/**
+ * Required to prevent element ghosting when resizing browser
+ * Class is toggled on JavaScript window resize event
+ */
+.disable-transition {
+	transition: none;
+}

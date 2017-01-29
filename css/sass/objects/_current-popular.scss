@@ -1,0 +1,128 @@
+// -----------------------------------------------------------------------------
+// CURRENT POPULAR
+// -----------------------------------------------------------------------------
+
+.current-popular {
+	overflow: auto;
+
+	.grid {
+		font-size: 0;
+	}
+
+	&--pulled-up {
+		margin-top: -100px;
+	}
+
+	&__item {
+		position: relative;
+		display: block;
+		height: 475px;
+		overflow: hidden;
+		margin-bottom: 20px;
+		background-color: #000;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: $z-zeta;
+			background-color: rgba(0, 0, 0, 0.75);
+			opacity: 0;
+			transition: opacity 300ms ease;
+		}
+
+		&:hover {
+			&:before {
+				opacity: 1;
+			}
+
+			.current-popular__item-image {
+				transform: scale(1.05);
+			}
+
+			.current-popular__item-info {
+				opacity: 1;
+				transform: translate3d(0,0,0);
+			}
+		}
+	}
+
+	&__item-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		transition:
+			transform 5000ms ease;
+	}
+
+	&__item-info {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		opacity: 0;
+		transform: translate3d(0,20px,0);
+		transition:
+			opacity 300ms ease,
+			transform 300ms ease;
+	}
+
+		&__item-title {
+			z-index: $z-epsilon;
+			color: #fff;
+			font-family: $font-stack--body;
+			font-weight: 200;
+			text-align: center;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 90px;
+			margin: 0 auto;
+			max-width: 90%;
+			line-height: 1.5;
+		}
+
+		&__item-rating {
+			position: relative;
+			z-index: $z-epsilon;
+			color: #fff;
+			display: none;
+		}
+
+		&__item-arrow {
+			position: absolute;
+			z-index: 3;
+			color: #fff;
+			bottom: 50px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			width: 30px;
+
+			svg {
+				width: 100%;
+			}
+		}
+
+	&__item-quick-rating {
+		padding: 4px 13px;
+		position: absolute;
+		text-align: center;
+		background-color: $color--primary;
+		font-size: 13px;
+		color: #fff;
+		z-index: 2;
+		display: inline-block;
+		bottom: 0;
+		right: 0;
+	}
+}

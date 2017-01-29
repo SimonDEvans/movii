@@ -1,0 +1,73 @@
+// -----------------------------------------------------------------------------
+// LINKS
+// -----------------------------------------------------------------------------
+
+/**
+ * Default link styles – change these to suit project requirements.
+ */
+a {
+    @include default-transition((background-image, background-color, color, text-shadow, border));
+    text-decoration: none;
+    color: $color--link;
+
+    &:link {
+        color: $color--link;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: darken($color--link, 10%);
+    }
+    
+    &:active,
+    &:focus {
+        color: $color--link;
+    }
+}
+
+
+
+/**
+ * A button link can be used for styling a `<button>` element to look like a
+ * normal link – should always be used in place of `<a href="#">...</a>` for
+ * triggering a JS action. Can be used in conjunction with `.subtle-link` to
+ * remove color and underline properties.
+ */
+.button-link {
+    border: 0;
+    padding: 0;
+    font: inherit;
+    line-height: inherit;
+    text-decoration: underline;
+    color: $color--link;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+
+/**
+ * A subtle link inherits its color and text decoration (usually none) from its
+ * parent.
+ */
+.subtle-link {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+
+
+/**
+ * Nicer underline
+ */
+.fancy-underline {
+    text-decoration: none;
+    text-shadow: 0.025em 0 0 #fff, -0.025em 0 0 #fff, 0.05em 0 0 #fff, -0.05em 0 0 #fff, 0.075em 0 0 #fff, -0.075em 0 0 #fff;
+    background-image: linear-gradient(to top, transparent 10%, $color--link-underline 10%, $color--link-underline 14%, transparent 10%);
+
+    &:hover {
+        border-bottom: 0;
+        text-decoration: none;
+    }
+}
+

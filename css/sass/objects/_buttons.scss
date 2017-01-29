@@ -1,0 +1,168 @@
+// -----------------------------------------------------------------------------
+// BUTTONS
+// -----------------------------------------------------------------------------
+
+/**
+ * Settings – override in `settings.scss`
+ */
+$disabled-button-bg: #eee !default;
+$disabled-button-fg: #999 !default;
+
+
+
+/**
+ * Standard button
+ *
+ * 1. Remove default styles from `<button>` elements.
+ * 2. Ensure `a:*` pseudo classes don’t override button styles.
+ * 3. Remove extra height from `<button>` elements in Firefox.
+ */
+.button {
+    @include default-transition((background-color, color));
+    @include font-size(delta);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    border: 0; /* [1] */
+    padding: 0.59em 2em 0.53em;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    
+
+    &,
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none; /* [2] */
+        color: #fff;
+        background-color: transparent; /* [2] */
+        outline: 0;
+    }
+
+    &::-moz-focus-inner {
+        border: 0; /* [3] */
+        padding: 0; /* [3] */
+    }
+}
+
+.article .button {
+    &:link {
+        text-shadow: none;
+        background-image: none;
+    }
+}
+
+
+/**
+ * Full-width button
+ *
+ * 1. 100% width required to make `<button>` elements fill container.
+ */
+.button--full-width {
+    display: block;
+    width: 100%; /* [1] */
+}
+
+
+
+/**
+ * Disabled button
+ */
+.button--disabled,
+.button:disabled {
+    color: $disabled-button-fg;
+    background-color: $disabled-button-bg;
+    pointer-events: none;
+}
+
+
+.button--bare {
+    background-color: transparent;
+
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        background-color: transparent;
+    }
+}
+
+
+
+/**
+ * Button themes
+ */
+.button--primary {
+
+
+    &,
+    &:visited,
+    &:active,
+    &:link,
+    &:focus {
+        background-color: $color--primary;
+        color: #fff;
+    }
+
+    &:hover {
+        background-color: darken($color--primary, 10%);
+    }
+}
+
+
+.button--secondary {
+
+}
+
+.button--oversize {
+    &,
+    &:link {
+        border: 3px solid #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 400;
+        background-color: transparent;
+        color: #fff;
+        
+        &:hover {
+            color: $color--body;
+            background-color: #fff;
+        }
+    }
+}
+
+.button--danger {
+
+}
+
+.button--hollow {
+
+}
+
+.button--submit {
+    margin-top: 20px;
+
+    @include media-query(tablet) {
+        margin-top: 0;
+    }
+}
+
+
+/**
+ * Button sizes (`.button--medium` should be the default button size and lives
+ * in the default `.button` class).
+ */
+.button--large {
+
+}
+
+.button--small {
+
+}
