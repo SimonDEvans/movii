@@ -1,50 +1,53 @@
-var homeImage = function() {
-  var images = Array(
-    "https://image.tmdb.org/t/p/original/PIXSMakrO3s2dqA7mCvAAoVR0E.jpg",
-    "https://image.tmdb.org/t/p/original/1jgulSytTJcATkGX8syGbD2glXD.jpg",
-    "https://image.tmdb.org/t/p/original/9X3cDZb4GYGQeOnZHLwMcCFz2Ro.jpg",
-    "https://image.tmdb.org/t/p/original/qXQinDhDZkTiqEGLnav0h1YSUu8.jpg",
-    "https://image.tmdb.org/t/p/original/cNLZ7YGRikb4IsLblrzu86ndZPw.jpg",
-    "https://image.tmdb.org/t/p/original/6bbZ6XyvgfjhQwbplnUh1LSj1ky.jpg",
-    "https://image.tmdb.org/t/p/original/dkMD5qlogeRMiEixC4YNPUvax2T.jpg"
-  );
+var homeCarousel = function() {
 
-  var currimg = 0;
+  var $homeHero         = $( '.home__image' ),
+      currentImage      = 0,
+      heroImages        = [
+        "https://image.tmdb.org/t/p/original/PIXSMakrO3s2dqA7mCvAAoVR0E.jpg",
+        "https://image.tmdb.org/t/p/original/1jgulSytTJcATkGX8syGbD2glXD.jpg",
+        "https://image.tmdb.org/t/p/original/9X3cDZb4GYGQeOnZHLwMcCFz2Ro.jpg",
+        "https://image.tmdb.org/t/p/original/qXQinDhDZkTiqEGLnav0h1YSUu8.jpg",
+        "https://image.tmdb.org/t/p/original/cNLZ7YGRikb4IsLblrzu86ndZPw.jpg",
+        "https://image.tmdb.org/t/p/original/6bbZ6XyvgfjhQwbplnUh1LSj1ky.jpg",
+        "https://image.tmdb.org/t/p/original/dkMD5qlogeRMiEixC4YNPUvax2T.jpg"
+      ];
 
-  function loadimg(){
+  function loadImages(){
 
-     $('.home__image').animate({ opacity: 1 }, 600,function(){
+    $homeHero.animate({ 
+      opacity: 1
+    }, 600, function(){
 
-          //finished animating, minifade out and fade new back in           
-          $('.home__image').animate({ opacity: 0.6 }, 600,function(){
+      // Fade out and in
+      $homeHero.animate({ 
+        opacity: 0.6 
+      }, 600, function(){
 
-              currimg++;
+        currentImage++;
 
-              if(currimg > images.length-1){
+        if( currentImage > heroImages.length-1 ){
+          currentImage=0;
+        }
 
-                  currimg=0;
+        var nextImage = heroImages[currentImage];
 
-              }
+        //swap out bg src
+        $homeHero.css('background-image', 'url('+nextImage+')'); 
 
-              var newimage = images[currimg];
+        //animate fully back in
+        $homeHero.animate({ 
+          opacity: 1 
+        }, 600, function(){
 
-              //swap out bg src                
-              $('.home__image').css("background-image", "url("+newimage+")"); 
-
-              //animate fully back in
-              $('.home__image').animate({ opacity: 1 }, 600,function(){
-
-                  //set timer for next
-                  setTimeout(loadimg,5000);
-
-              });
-
-          });
-
+          //set timer for next
+          setTimeout(loadImages,5000);
+        });
       });
+    });
+  }
 
-    }
-    setTimeout(loadimg,5000);
+  setTimeout( loadImages, 5000);
+
 }
 
-// homeImage();
+homeCarousel();
