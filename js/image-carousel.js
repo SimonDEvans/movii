@@ -48,6 +48,6 @@ var homeCarousel = function() {
 
   setTimeout( loadImages, 5000);
 
-}
+};
 
 homeCarousel();

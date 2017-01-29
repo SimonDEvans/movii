@@ -1,6 +1,6 @@
 var movii = function() {
 
-  var key                   = 'd69ac47b3abbdd090506891feaac1088'
+  var key                   = 'd69ac47b3abbdd090506891feaac1088',
       proxyUrl              = 'https://query.yahooapis.com/v1/public/yql',
       movieDB               = 'https://api.themoviedb.org/3/';
 
@@ -13,7 +13,6 @@ var movii = function() {
         $searchForm         = $( '.home__form' ),
         $listingGrid        = $( '.current-popular .grid' ),
         $hero               = $( '.hero' ),
-        $movieID            = $( '.movie-id' ),
         popular             = '' + movieDB + 'discover/movie?sort_by=popularity.desc&api_key=' + key + '',
         movieCount          = 8;
 
@@ -28,8 +27,7 @@ var movii = function() {
           inputValue        = rawValue.replace(/\s/g, "%20"),
           searchURL         = '' + movieDB + 'search/movie?query=' + inputValue + '&api_key=' + key + '';
 
-      if ( inputValue.trim().length == 0 ) {
-        console.log( 'nada' );
+      if ( inputValue.trim().length === 0 ) {
       } else {
         emptyResults();
         retrieveMovies( searchURL );
@@ -56,7 +54,7 @@ var movii = function() {
           $heroDate           = $( '.hero__date span' ),
           $heroRating         = $( '.hero__rating span' ),
           $heroAge            = $( '.hero__age-rating' ),
-          $heroSummary        = $( '.hero__summary' );
+          $heroSummary        = $( '.hero__summary' ),
           $movieID            = $( '.hero .movie-id' ),
 
           // Set which movie to showcase
@@ -77,7 +75,7 @@ var movii = function() {
       $movieID.text(mostPopular.id);
 
       // Add kids rating
-      if (mostPopular.adult != 'false') {
+      if (mostPopular.adult !== 'false') {
         $heroAge.text( 'Suitable for children' );
       } else {
         $heroAge.text( 'Not suitable for children' );
@@ -146,8 +144,8 @@ var movii = function() {
         'success': function(response) {
 
           // Set response vars
-          var response      = response['query']['results']['json'];
-              movieList     = response['results'];
+          var data          = response.query.results.json,
+              movieList     = data.results;
 
           // Populate image list
           populatePopularMovies( movieList );
@@ -198,8 +196,7 @@ var movii = function() {
         $videoLink        = $( '.modal__video a' ),
         $home             = $( '.home' ),
         $homeWrapper      = $( '.home-wrapper' ),
-        $triggerModal     = $( '.js-modal' ),
-        initialURL        = location.href;
+        $triggerModal     = $( '.js-modal' );
 
     function populateModal( response ) {
 
@@ -221,7 +218,7 @@ var movii = function() {
     function showModal() {
       $modal.fadeIn(300);
       $home.fadeOut(300);
-      $homeWrapper.fadeOut(300)
+      $homeWrapper.fadeOut(300);
       $( 'html, body' ).animate({
          scrollTop: $( 'body' ).offset().top
       }, 0);
@@ -230,7 +227,7 @@ var movii = function() {
     function hideModal() {
       $modal.fadeOut(300);
       $home.fadeIn(300);
-      $homeWrapper.fadeIn(300)
+      $homeWrapper.fadeIn(300);
     }
 
     function retrieveMovies( linkText ) {
@@ -251,10 +248,9 @@ var movii = function() {
         'success': function(response) {
 
           // Set response vars
-          var response      = response['query']['results']['json'];
-              movieList     = response['results'];
+          var data          = response.query.results.json;
 
-          populateModal( response );
+          populateModal( data );
           showModal();
 
         },
@@ -273,8 +269,8 @@ var movii = function() {
         'success': function(response) {
 
           // Set response vars
-          var response      = response['query']['results']['json'];
-              videoID       = response['results']['0']['key'];
+          var data          = response.query.results.json,
+              videoID       = data.results['0'].key;
 
           populateVideo(videoID);
 
@@ -297,13 +293,13 @@ var movii = function() {
     });
 
     // Back button
-    window.onpopstate = function(event) {
+    window.onpopstate = function() {
       hideModal();
     };
-  }
+  };
 
   movieSearch();
 
-}
+};
 
 movii();
