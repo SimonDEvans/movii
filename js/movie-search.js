@@ -17,7 +17,6 @@ var movii = function() {
         popular             = '' + movieDB + 'discover/movie?sort_by=popularity.desc&api_key=' + key + '',
         movieCount          = 8;
 
-
     // Empty results
     function emptyResults() {
       $listingGrid.empty();
