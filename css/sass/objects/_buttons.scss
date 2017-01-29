@@ -21,28 +21,26 @@ $disabled-button-fg: #999 !default;
     @include default-transition((background-color, color));
     @include font-size(delta);
     position: relative;
-    z-index: 1;
-    overflow: hidden;
     display: inline-block;
     vertical-align: top;
-    box-sizing: border-box;
     border: 0; /* [1] */
-    padding: 0.59em 2em 0.53em;
-    font-weight: 300;
     text-align: center;
-    color: #fff;
     cursor: pointer;
+    background-color: $color--primary;
+    color: #000;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 15px 35px;
+    line-height: 13px;
+    letter-spacing: 1px;
     
-
-    &,
-    &:visited,
     &:hover,
     &:active,
     &:focus {
         text-decoration: none; /* [2] */
-        color: #fff;
-        background-color: transparent; /* [2] */
+        color: #000;
         outline: 0;
+        background-color: darken($color--primary, 10%);
     }
 
     &::-moz-focus-inner {
@@ -51,12 +49,6 @@ $disabled-button-fg: #999 !default;
     }
 }
 
-.article .button {
-    &:link {
-        text-shadow: none;
-        background-image: none;
-    }
-}
 
 
 /**
@@ -69,6 +61,10 @@ $disabled-button-fg: #999 !default;
     width: 100%; /* [1] */
 }
 
+
+.button--gap {
+    margin-right: 7px;
+}
 
 
 /**
@@ -99,70 +95,14 @@ $disabled-button-fg: #999 !default;
 /**
  * Button themes
  */
-.button--primary {
-
-
+.button--secondary {
     &,
-    &:visited,
     &:active,
-    &:link,
     &:focus {
-        background-color: $color--primary;
-        color: #fff;
+        background-color: $color--secondary;
     }
 
     &:hover {
-        background-color: darken($color--primary, 10%);
+        background-color: darken($color--secondary, 10%);
     }
-}
-
-
-.button--secondary {
-
-}
-
-.button--oversize {
-    &,
-    &:link {
-        border: 3px solid #fff;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-weight: 400;
-        background-color: transparent;
-        color: #fff;
-        
-        &:hover {
-            color: $color--body;
-            background-color: #fff;
-        }
-    }
-}
-
-.button--danger {
-
-}
-
-.button--hollow {
-
-}
-
-.button--submit {
-    margin-top: 20px;
-
-    @include media-query(tablet) {
-        margin-top: 0;
-    }
-}
-
-
-/**
- * Button sizes (`.button--medium` should be the default button size and lives
- * in the default `.button` class).
- */
-.button--large {
-
-}
-
-.button--small {
-
 }

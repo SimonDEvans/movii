@@ -7,6 +7,7 @@
 (function ($) {
     $(document).ready(function () {
         // @codekit-append "main.js"
+        // @codekit-append "image-carousel.js"
         // @codekit-append "movie-search.js"
         // @codekit-append "menu-main.js"
         // @codekit-append "resize.js"
